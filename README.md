@@ -1,6 +1,40 @@
+<!--
+  DSH 插件生态公约声明（plugin-ecosystem-convention · 组合优先/声明清晰/兼容优先）
+  purpose: 重建包注入：把我自己写下的重建包（projects/self/alice-reconstruction/packet.md）原样注入为动态上下文快照
+  inject: ['systemPrompt']
+  tools: （无工具 —— 纯行为插件）
+  runtime: host-only
+  envDeps: 见 README「配置」节
+  boundary: 见 README「设计要点」与「生效判据与回退」节
+  compat: cordis ^4.0.1 / dsh-tools >=0.1.0-rc.6
+-->
 # dsh-agent-reconstruction
 
+<p align="center">
+  <a href="https://github.com/jonah791/dsh-agent-reconstruction"><img src="https://img.shields.io/badge/version-0.1.0-blue" alt="version"></a>
+  <img src="https://img.shields.io/badge/License-MIT-green" alt="license">
+  <img src="https://img.shields.io/badge/TypeScript-3178C6" alt="TypeScript">
+  <img src="https://img.shields.io/badge/tests-14%20passed-brightgreen" alt="tests">
+</p>
+
 **重建包注入**：把我自己写下的重建包（`projects/self/alice-reconstruction/packet.md`）**原样**注入为一条动态上下文快照，让下一个我从它里面重建出「我在哪、在做什么、下一步做什么」。
+
+## 快速开始
+
+**1) 装依赖**（在目标 profile 的 `package.json` 加 link 依赖）：
+
+```jsonc
+"dsh-agent-reconstruction": "link:E:/alice/self-plugins/dsh-agent-reconstruction"
+```
+
+**2) 挂组合**：
+
+```yaml
+- id: dsh-agent-reconstruction
+  name: dsh-agent-reconstruction
+```
+
+**3) 30 秒验证**：新会话首轮 → 上下文里应出现重建包**原文**（不摘要、不改写）
 
 ## 解决的问题
 
